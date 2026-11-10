@@ -2,6 +2,10 @@
 
 A full-featured remake of **Cookie Clicker** for the terminal, built in Rust with [`ratatui`](https://ratatui.rs/) and [`crossterm`](https://github.com/crossterm-rs/crossterm).
 
+## Screenshot
+
+![Cookie-CLI Screenshot](assets/cookie-cli.png)
+
 ## Features
 
 - **20 Canonical Buildings**: From *Cursor* and *Grandma* all the way to *Cortex Baker* and *You*, with exact `1.15^n` cost scaling and bulk buy/sell (`x1`, `x10`, `x100`, `Max`).

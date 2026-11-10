@@ -611,3 +611,25 @@ fn test_tui_rendering_all_tabs_modals_ascii_and_sizes() {
             .expect("drawing small resolution must not panic");
     }
 }
+
+#[test]
+fn test_readme_contains_screenshot() {
+    let manifest_dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
+    let readme_path = manifest_dir.join("README.md");
+    let readme = fs::read_to_string(&readme_path).expect("README.md must be readable");
+    assert!(
+        readme.contains("![Cookie-CLI Screenshot](assets/cookie-cli.png)"),
+        "README.md must embed the CLI screenshot using relative Markdown syntax"
+    );
+
+    let screenshot_path = manifest_dir.join("assets").join("cookie-cli.png");
+    assert!(
+        screenshot_path.exists(),
+        "assets/cookie-cli.png must exist in the repository"
+    );
+    let bytes = fs::read(&screenshot_path).expect("assets/cookie-cli.png must be readable");
+    assert!(
+        bytes.starts_with(&[0x89, b'P', b'N', b'G', 0x0D, 0x0A, 0x1A, 0x0A]),
+        "assets/cookie-cli.png must start with valid PNG magic bytes"
+    );
+}

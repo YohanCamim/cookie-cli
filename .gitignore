@@ -1,0 +1,7 @@
+# Genere par l'orchestrateur agy depuis la stack Notion
+
+# Rust
+/target
+**/*.rs.bk
+.env
+.DS_Store
